@@ -37,12 +37,12 @@ Installation
 
 3. Add bungler to your `~/.bash_profile`. Ubuntu people, this is `~/.profile`. This ensures it's only source at login rather than every time you open a terminal. I'm looking at you, bashrc.
     ~~~sh
-    $ echo '[[ -s "$HOME/.bungler/bungle" ]] && . $HOME/.bungler/bungle' >> ~/.bash_profile
+    $ echo '[[ -s "$HOME/.bungler/bungler" ]] && . $HOME/.bungler/bungler' >> ~/.bash_profile
     ~~~
 
 4. Since it would be lame to log out and log back in just to bungle, sorce the file instead.
     ~~~sh
-    $ . ~/.bungler/bungle
+    $ . ~/.bungler/bungler
     ~~~
 
 #### Upgrading

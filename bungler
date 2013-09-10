@@ -8,7 +8,7 @@ function bungle_load_cmds {
     BUNGLER="rails rake"
     export BUNGLER
   fi
-  export BUNGLER_RAILS_CMDS=($BUNGLER)
+  BUNGLER_RAILS_CMDS=($BUNGLER)
 }
 
 
