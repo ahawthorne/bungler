@@ -30,14 +30,14 @@ Installation
     $ git clone https://github.com/ahawthorne/bungler.git ~/.bungler
     ~~~
 
-2. Add bungler to your `~/.bash_profile`. Ubuntu people, this is `~/.profile`. This ensures it's only source at login rather than every time you open a terminal. I'm looking at you, bashrc.
-    ~~~sh
-    $ echo '[[ -s "$HOME/.bungler/bungle" ]] && . $HOME/.bungler/bungle' >> ~/.bash_profile
-    ~~~
-
-3. Let bungler know which commands to bungle. This is handled via the `$BUNGLER` environment variable.
+2. Let bungler know which commands to bungle. This is handled via the `$BUNGLER` environment variable.
     ~~~sh
     $ echo 'export BUNGLER="rails rake rspec cucumber"' >> ~/.bash_profile
+    ~~~
+
+3. Add bungler to your `~/.bash_profile`. Ubuntu people, this is `~/.profile`. This ensures it's only source at login rather than every time you open a terminal. I'm looking at you, bashrc.
+    ~~~sh
+    $ echo '[[ -s "$HOME/.bungler/bungle" ]] && . $HOME/.bungler/bungle' >> ~/.bash_profile
     ~~~
 
 4. Since it would be lame to log out and log back in just to bungle, sorce the file instead.
