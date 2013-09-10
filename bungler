@@ -1,0 +1,48 @@
+#!/bin/bash
+
+#define commands for use with rails
+#RAILS_CMDS=(rails rake rspec cucumber pickler)
+
+function bungle_load_cmds {
+  if [[ -z ${BUNGLER} ]]; then
+    BUNGLER="rails rake"
+    export BUNGLER
+  fi
+  export BUNGLER_RAILS_CMDS=($BUNGLER)
+}
+
+
+function check_exit {
+  "$@" > /dev/null 2>&1
+  echo $?
+}
+
+function bunglfy {
+  if [[ 0 -ne $(check_exit hash git) ]]; then
+    echo "Bungler needs Git. So sorry."
+    return 1
+  fi
+  CMD=$1
+  GO=$@
+  if [[ $(check_exit git rev-parse) -eq 0 ]]; then
+    RAILPATH=$(git rev-parse --show-toplevel)
+    if [[ -f ${RAILPATH}/bin/${CMD} ]]; then
+      ${RAILPATH}/bin/${GO}
+    fi
+  fi
+  if [[ $(check_exit type -f ${CMD}) -eq 0 ]]; then
+    ${GO}
+  else
+    echo "${CMD}: command not found..."
+    return 127
+  fi
+}
+
+function bungle {
+  bungle_load_cmds
+  for i in "${BUNGLER_RAILS_CMDS[@]}"; do
+    eval "function $i { bunglfy $i \$@; }"
+  done
+}
+
+bungle
