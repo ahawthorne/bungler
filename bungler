@@ -29,8 +29,7 @@ function bunglfy {
     if [[ -f ${RAILPATH}/bin/${CMD} ]]; then
       ${RAILPATH}/bin/${GO}
     fi
-  fi
-  if [[ $(check_exit type -f ${CMD}) -eq 0 ]]; then
+  elif [[ $(check_exit type -f ${CMD}) -eq 0 ]]; then
     ${GO}
   else
     echo "${CMD}: command not found..."
