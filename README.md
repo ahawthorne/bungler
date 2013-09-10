@@ -26,30 +26,32 @@ Installation
 --------------
 
 1. Check out to ~/
-
-```
-$ git clone https://github.com/ahawthorne/bungler.git ~/.bungler
-```
+    ~~~sh
+    $ git clone https://github.com/ahawthorne/bungler.git ~/.bungler
+    ~~~
 
 2. Add bungler to your `~/.bash_profile`. Ubuntu people, this is `~/.profile`. This ensures it's only source at login rather than every time you open a terminal. I'm looking at you, bashrc.
-```
-$ echo '[[ -s "$HOME/.bungler/bungle" ]] && . $HOME/.bungler/bungle' >> ~/.bash_profile
-```
+    ~~~sh
+    $ echo '[[ -s "$HOME/.bungler/bungle" ]] && . $HOME/.bungler/bungle' >> ~/.bash_profile
+    ~~~
+
 3. Let bungler know which commands to bungle. This is handled via the `$BUNGLER` environment variable.
-```
-$ echo 'export BUNGLER="rails rake rspec cucumber"' >> ~/.bash_profile
-```
+    ~~~sh
+    $ echo 'export BUNGLER="rails rake rspec cucumber"' >> ~/.bash_profile
+    ~~~
+
 4. Since it would be lame to log out and log back in just to bungle, sorce the file instead.
-```
-$ . ~/.bungler/bungle
-```
+    ~~~sh
+    $ . ~/.bungler/bungle
+    ~~~
 
 #### Upgrading
 Just pull in the lateset from the repo
-```
-$ cd ~/.bungler
-$ git pull
-```
+
+    ~~~sh
+    $ cd ~/.bungler
+    $ git pull
+    ~~~
 
 #### Additionally
 If you don't let bungler know that you want it to bungle a command, it's not going to work. Make sure you've added the commands you need to the `$BUNGLER` var.
