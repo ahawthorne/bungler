@@ -26,9 +26,11 @@ Installation
 --------------
 
 1. Check out to ~/
+
 ```
 $ git clone https://github.com/ahawthorne/bungler.git ~/.bungler
 ```
+
 2. Add bungler to your `~/.bash_profile`. Ubuntu people, this is `~/.profile`. This ensures it's only source at login rather than every time you open a terminal. I'm looking at you, bashrc.
 ```
 $ echo '[[ -s "$HOME/.bungler/bungle" ]] && . $HOME/.bungler/bungle' >> ~/.bash_profile
