@@ -46,12 +46,12 @@ Installation
     ~~~
 
 #### Upgrading
-Just pull in the lateset from the repo
+Just pull in the lateset from the repo:
 
-    ~~~sh
-    $ cd ~/.bungler
-    $ git pull
-    ~~~
+~~~sh
+$ cd ~/.bungler
+$ git pull
+~~~
 
 #### Additionally
 If you don't let bungler know that you want it to bungle a command, it's not going to work. Make sure you've added the commands you need to the `$BUNGLER` var.
