@@ -9,12 +9,21 @@ function bungle_load_cmds {
     export BUNGLER
   fi
   BUNGLER_RAILS_CMDS=($BUNGLER)
+
+  for i in "${BUNGLER_RAILS_CMDS[@]}"; do
+    eval "function $i { bunglfy $i \$@; }"
+  done
 }
 
 
 function check_exit {
   "$@" > /dev/null 2>&1
   echo $?
+}
+
+function _bungleable_command_not_found {
+  echo "${CMD}: command not found..."
+  return 127
 }
 
 function bunglfy {
@@ -28,20 +37,55 @@ function bunglfy {
     RAILPATH=$(git rev-parse --show-toplevel)
     if [[ -f ${RAILPATH}/bin/${CMD} ]]; then
       ${RAILPATH}/bin/${GO}
+    else
+      _bungleable_command_not_found
     fi
   elif [[ $(check_exit type -f ${CMD}) -eq 0 ]]; then
     ${GO}
   else
-    echo "${CMD}: command not found..."
-    return 127
+    _bungleable_command_not_found
   fi
 }
 
 function bungle {
-  bungle_load_cmds
-  for i in "${BUNGLER_RAILS_CMDS[@]}"; do
-    eval "function $i { bunglfy $i \$@; }"
-  done
+
+  BUNGLECOM="${1}"
+  case "$BUNGLECOM" in
+    "list" | "-l" | "--list" )
+      echo -e "Bungled commands: \n ${BUNGLER}"
+      ;;
+    "" )
+      read -r -d '' DERP <<'EOF'
+Bungler!
+Usage: bungle [<command>] [<args>]
+
+A little something like this:
+  Command                         Example
+  bungle add <command-name>       bungle add pickler
+  bungle remove <command-name>    bungle remove pickler
+
+EOF
+      echo -e "$DERP"
+      bungle_load_cmds
+      ;;
+    "reload" )
+      bungle_load_cmds
+      ;;
+    "add" )
+      if [[ ! $BUNGLER =~ "$2"  ]]; then
+        export BUNGLER="$BUNGLER $2"
+        bungle_load_cmds
+      fi
+      ;;
+    "remove" )
+      if [[ $BUNGLER =~ "$2"  ]]; then
+        export BUNGLER=`echo $BUNGLER | sed "s/$2//"`
+        bungle_load_cmds
+      fi
+      ;;
+    * )
+      ;;
+  esac
 }
 
-bungle
+bungle reload
