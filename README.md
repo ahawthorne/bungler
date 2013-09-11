@@ -35,7 +35,7 @@ Installation
     $ echo 'export BUNGLER="rails rake rspec cucumber"' >> ~/.bashrc
     ~~~
 
-3. Add bungler to your `~/.bashrc`. 
+3. Add bungler to your `~/.bashrc`.
     ~~~sh
     $ echo '[[ -s "$HOME/.bungler/bungler" ]] && . $HOME/.bungler/bungler' >> ~/.bashrc
     ~~~
@@ -57,6 +57,8 @@ $ git pull
 If you don't let bungler know that you want it to bungle a command, it's not going to work. Make sure you've added the commands you need to the `$BUNGLER` var.
 
 If you don't have your binstubs set up, bungler will attempt to use a command from your `PATH`.
+
+Forget which commands you bungled? Just run `bungle list` from anywhere.
 
 
 ###License

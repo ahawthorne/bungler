@@ -60,9 +60,10 @@ Bungler!
 Usage: bungle [<command>] [<args>]
 
 A little something like this:
-  Command                         Example
-  bungle add <command-name>       bungle add pickler
-  bungle remove <command-name>    bungle remove pickler
+  Command                            Example
+  bungle list                        No.
+  bungle add <bungled-command>       bungle add pickler
+  bungle remove <bungled-command>    bungle remove pickler
 
 EOF
       echo -e "$DERP"
