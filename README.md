@@ -20,8 +20,6 @@ You need these things:
 * **Binstubs**. Generate binstubs for your project. Bungler assumes you're using the `bin` directory off the root of the project. Yes, I understand that it's configuarble via bundler. This is bungler, not bundler. Maybe one day...?
 * **Bash**. Because I don't use zsh, or emacs, or insert holy-war-enticing tech here.
 
-I have not tested this at all with OSX. So sorry, I don't have a Mac.
-
 Installation
 --------------
 
@@ -40,9 +38,9 @@ Installation
     $ echo '[[ -s "$HOME/.bungler/bungler" ]] && . $HOME/.bungler/bungler' >> ~/.bashrc
     ~~~
 
-4. Since it would be lame to log out and log back in just to bungle, sorce the file instead.
+4. Opening a new terminal will source .bashrc and load bungler. Alternatively, you could just source .bashrc in your current terminal.
     ~~~sh
-    $ . ~/.bungler/bungler
+    $ . ~/.bashrc
     ~~~
 
 #### Upgrading
