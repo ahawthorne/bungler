@@ -37,6 +37,9 @@ function bunglfy {
     RAILPATH=$(git rev-parse --show-toplevel)
     if [[ -f ${RAILPATH}/bin/${CMD} ]]; then
       ${RAILPATH}/bin/${GO}
+    elif [[ $(check_exit type -f ${CMD}) -eq 0 ]]; then
+      shift
+      $(type -P ${CMD}) $@
     else
       _bungleable_command_not_found
     fi
