@@ -31,6 +31,7 @@ function bunglfy {
     echo "Bungler needs Git. So sorry."
     return 1
   fi
+  PDUB=$(pwd)
   CMD=$1
   GO=$@
   if [[ $(check_exit git rev-parse) -eq 0 ]]; then
@@ -43,6 +44,8 @@ function bunglfy {
     else
       _bungleable_command_not_found
     fi
+  elif [[ -e "${PDUB}/bin/${CMD}" ]]; then
+    "${PDUB}/bin/${GO}"
   elif [[ $(check_exit type -f ${CMD}) -eq 0 ]]; then
     ${GO}
   else
