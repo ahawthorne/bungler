@@ -46,8 +46,9 @@ function bunglfy {
     fi
   elif [[ -e "${PDUB}/bin/${CMD}" ]]; then
     "${PDUB}/bin/"${GO}
-  elif [[ $(check_exit type -f ${CMD}) -eq 0 ]]; then
-    ${GO}
+  elif [[ $(check_exit type -f ${CMD}) -eq 0 && $(check_exit type -P $CMD) -eq 0 ]]; then
+    shift
+    $(type -P ${CMD}) $@
   else
     _bungleable_command_not_found
   fi
